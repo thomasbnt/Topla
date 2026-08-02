@@ -1,4 +1,4 @@
-const VERSION = "v21";
+const VERSION = "v22";
 const CACHE_VERSION = `topla-${VERSION}`;
 const APP_SHELL = [
   "./",
