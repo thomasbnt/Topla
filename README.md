@@ -1,7 +1,5 @@
 # Topla
 
-[![License](https://img.shields.io/github/license/thomasbnt/Topla)](LICENSE)
-[![Last commit](https://img.shields.io/github/last-commit/thomasbnt/Topla)](https://github.com/thomasbnt/Topla/commits)
 ![PWA](https://img.shields.io/badge/PWA-ready-5A0FC8?logo=pwa&logoColor=white)
 ![Vanilla JS](https://img.shields.io/badge/JavaScript-Vanilla-F7DF1E?logo=javascript&logoColor=black)
 ![No dependencies](https://img.shields.io/badge/dependencies-none-brightgreen)
