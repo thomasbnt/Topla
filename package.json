@@ -1,0 +1,12 @@
+{
+  "name": "topla",
+  "private": true,
+  "description": "Boîte à outils pour animer vos parties de jeux de société — PWA statique, déployée en Cloudflare Workers (static assets).",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "^4"
+  }
+}

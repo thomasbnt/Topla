@@ -1,0 +1,97 @@
+{
+  "name": "Topla - Boîte à outils jeux de société",
+  "short_name": "Topla",
+  "description": "Boîte à outils pour animer vos parties de jeux de société : lettre et chiffre aléatoires, roulette du doigt, équipes, scores, dés et sablier.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "id": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#FBF9F4",
+  "theme_color": "#FF6B4A",
+  "lang": "fr",
+  "dir": "ltr",
+  "categories": ["games", "entertainment", "utilities"],
+  "shortcuts": [
+    {
+      "name": "Petit Bac",
+      "short_name": "Petit Bac",
+      "description": "Tirer une lettre au hasard",
+      "url": "./index.html#lettre"
+    },
+    {
+      "name": "Roulette du doigt",
+      "short_name": "Roulette",
+      "description": "Désigner un joueur au hasard",
+      "url": "./index.html#roulette"
+    },
+    {
+      "name": "Score / Compteur",
+      "short_name": "Score",
+      "description": "Suivre les scores de la partie",
+      "url": "./index.html#score"
+    },
+    {
+      "name": "Dés",
+      "short_name": "Dés",
+      "description": "Lancer des dés virtuels",
+      "url": "./index.html#des"
+    }
+  ],
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-192-maskable.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "icons/icon-512-maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "screenshots/accueil.png",
+      "sizes": "780x1688",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Écran d'accueil avec tous les outils"
+    },
+    {
+      "src": "screenshots/score.png",
+      "sizes": "780x1688",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Suivi des scores avec podium"
+    },
+    {
+      "src": "screenshots/des.png",
+      "sizes": "780x1688",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Dés virtuels"
+    },
+    {
+      "src": "screenshots/pile-face.png",
+      "sizes": "780x1688",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Pile ou face"
+    }
+  ]
+}

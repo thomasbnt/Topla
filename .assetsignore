@@ -1,0 +1,11 @@
+node_modules
+.git
+.idea
+.claude
+.wrangler
+wrangler.jsonc
+package.json
+package-lock.json
+README.md
+LICENSE
+.assetsignore

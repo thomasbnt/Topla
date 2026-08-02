@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
+<title>Topla — Boîte à outils jeux de société</title>
+<meta name="description" content="Topla, la boîte à outils pour animer vos parties de jeux de société : lettre et chiffre aléatoires, roulette du doigt, équipes, scores, dés et sablier." />
+<meta name="theme-color" content="#FF6B4A" />
+<link rel="manifest" href="manifest.json" />
+<link rel="icon" href="icons/icon-192.png" />
+<link rel="apple-touch-icon" href="icons/icon-192.png" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="Topla" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<div id="app">
+
+  <!-- ACCUEIL -->
+  <section class="screen" id="screen-accueil" data-screen="accueil">
+    <header class="home-header">
+      <h1 id="greeting">Bonjour</h1>
+      <p class="subtitle">Bon jeu !</p>
+    </header>
+
+    <div class="tile-grid">
+      <button class="tile" data-nav="lettre" style="--tile-color:#FF6B4A">
+        <span class="tile-icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v16" /><path d="M4 7V5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2" /><path d="M9 20h6" /></svg>
+        </span>
+        <span class="tile-label">Petit Bac</span>
+      </button>
+
+      <button class="tile" data-nav="chiffre" style="--tile-color:#FFC542">
+        <span class="tile-icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="9" y2="9" /><line x1="4" x2="20" y1="15" y2="15" /><line x1="10" x2="8" y1="3" y2="21" /><line x1="16" x2="14" y1="3" y2="21" /></svg>
+        </span>
+        <span class="tile-label">Chiffre aléatoire</span>
+      </button>
+
+      <button class="tile" data-nav="roulette" style="--tile-color:#1FA2A6">
+        <span class="tile-icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 14a8 8 0 0 1-8 8" /><path d="M18 11v-1a2 2 0 0 0-2-2a2 2 0 0 0-2 2" /><path d="M14 10V9a2 2 0 0 0-2-2a2 2 0 0 0-2 2v1" /><path d="M10 9.5V4a2 2 0 0 0-2-2a2 2 0 0 0-2 2v10" /><path d="M18 11a2 2 0 1 1 4 0v3a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15" /></svg>
+        </span>
+        <span class="tile-label">Roulette du doigt</span>
+      </button>
+
+      <button class="tile" data-nav="equipes" style="--tile-color:#8B5CF6">
+        <span class="tile-icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><path d="M16 3.128a4 4 0 0 1 0 7.744" /><path d="M22 21v-2a4 4 0 0 0-3-3.87" /><circle cx="9" cy="7" r="4" /></svg>
+        </span>
+        <span class="tile-label">Équipes aléatoires</span>
+      </button>
+
+      <button class="tile" data-nav="score" style="--tile-color:#E85D9C">
+        <span class="tile-icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14.66V17a1 1 0 0 1-1 1 2 2 0 0 0-2 2v2" /><path d="M14 14.66V17a1 1 0 0 0 1 1 2 2 0 0 1 2 2v2" /><path d="M17.916 10H19.5A2.5 2.5 0 0 0 22 7.5V5a1 1 0 0 0-1-1h-3" /><path d="M4 22h16" /><path d="M6 9a6 6 0 0 0 12 0V3a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1z" /><path d="M6.084 10H4.5A2.5 2.5 0 0 1 2 7.5V5a1 1 0 0 1 1-1h3" /></svg>
+        </span>
+        <span class="tile-label">Score / Compteur</span>
+      </button>
+
+      <button class="tile" data-nav="des" style="--tile-color:#3E7BFA">
+        <span class="tile-icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="12" height="12" x="2" y="10" rx="2" ry="2" /><path d="m17.92 14 3.5-3.5a2.24 2.24 0 0 0 0-3l-5-4.92a2.24 2.24 0 0 0-3 0L10 6" /><path d="M6 18h.01" /><path d="M10 14h.01" /><path d="M15 6h.01" /><path d="M18 9h.01" /></svg>
+        </span>
+        <span class="tile-label">Dés</span>
+      </button>
+
+      <button class="tile" data-nav="sablier" style="--tile-color:#FF9F43">
+        <span class="tile-icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 22h14" /><path d="M5 2h14" /><path d="M17 22v-4.172a2 2 0 0 0-.586-1.414L12 12l-4.414 4.414A2 2 0 0 0 7 17.828V22" /><path d="M7 2v4.172a2 2 0 0 0 .586 1.414L12 12l4.414-4.414A2 2 0 0 0 17 6.172V2" /></svg>
+        </span>
+        <span class="tile-label">Sablier</span>
+      </button>
+
+      <button class="tile" data-nav="pile-face" style="--tile-color:#3EAE71">
+        <span class="tile-icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13.744 17.736a6 6 0 1 1-7.48-7.48" /><path d="M15 6h1v4" /><path d="m6.134 14.768.866-.5 2 3.464" /><circle cx="16" cy="8" r="6" /></svg>
+        </span>
+        <span class="tile-label">Pile ou face</span>
+      </button>
+    </div>
+
+    <div class="home-footer">
+      <button class="settings-link" data-nav="parametres">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915" /><circle cx="12" cy="12" r="3" /></svg>
+        <span>Paramètres</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- PARAMETRES -->
+  <section class="screen" id="screen-parametres" data-screen="parametres">
+    <header class="tool-header">
+      <button class="back-btn" data-nav="accueil" aria-label="Retour à l'accueil"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7" /><path d="M19 12H5" /></svg></button>
+      <h2>Paramètres</h2>
+      <span class="header-spacer"></span>
+    </header>
+    <div class="tool-body">
+      <div class="storage-card">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="storage-icon"><ellipse cx="12" cy="5" rx="9" ry="3" /><path d="M3 5V19A9 3 0 0 0 21 19V5" /><path d="M3 12A9 3 0 0 0 21 12" /></svg>
+        <div>
+          <p class="storage-label">Données stockées sur cet appareil</p>
+          <p class="storage-value" id="storage-value">0 o</p>
+        </div>
+      </div>
+
+      <p class="hint hint-small">Joueurs, équipes et scores enregistrés sont stockés uniquement sur cet appareil (aucun envoi en ligne).</p>
+
+      <button class="btn btn-danger-outline" id="storage-clear-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 11v6" /><path d="M14 11v6" /><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" /><path d="M3 6h18" /><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" /></svg>
+        Supprimer les données locales
+      </button>
+    </div>
+  </section>
+
+  <!-- PILE OU FACE -->
+  <section class="screen" id="screen-pile-face" data-screen="pile-face" data-accent="vert">
+    <header class="tool-header">
+      <button class="back-btn" data-nav="accueil" aria-label="Retour à l'accueil"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7" /><path d="M19 12H5" /></svg></button>
+      <h2>Pile ou face</h2>
+      <span class="header-spacer"></span>
+    </header>
+    <div class="tool-body tap-zone" id="pile-face-tap-zone">
+      <p class="hint">Touchez l'écran pour lancer la pièce</p>
+      <div class="coin">
+        <div class="coin-inner" id="coin-inner">
+          <div class="coin-side coin-side-pile">
+            <svg class="coin-icon" viewBox="0 0 512 512" aria-hidden="true">
+              <rect x="140" y="140" width="232" height="232" rx="44" transform="rotate(-8 256 256)" />
+              <g>
+                <circle cx="192" cy="192" r="21" transform="rotate(-8 256 256)" />
+                <circle cx="320" cy="192" r="21" transform="rotate(-8 256 256)" />
+                <circle cx="256" cy="256" r="21" transform="rotate(-8 256 256)" />
+                <circle cx="192" cy="320" r="21" transform="rotate(-8 256 256)" />
+                <circle cx="320" cy="320" r="21" transform="rotate(-8 256 256)" />
+              </g>
+            </svg>
+            <span class="coin-label">PILE</span>
+          </div>
+          <div class="coin-side coin-side-face">
+            <svg class="coin-icon" viewBox="0 0 512 512" aria-hidden="true">
+              <rect x="140" y="140" width="232" height="232" rx="44" transform="rotate(-8 256 256)" />
+              <g>
+                <circle cx="192" cy="192" r="21" transform="rotate(-8 256 256)" />
+                <circle cx="320" cy="192" r="21" transform="rotate(-8 256 256)" />
+                <circle cx="256" cy="256" r="21" transform="rotate(-8 256 256)" />
+                <circle cx="192" cy="320" r="21" transform="rotate(-8 256 256)" />
+                <circle cx="320" cy="320" r="21" transform="rotate(-8 256 256)" />
+              </g>
+            </svg>
+            <span class="coin-label">FACE</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LETTRE ALEATOIRE -->
+  <section class="screen" id="screen-lettre" data-screen="lettre" data-accent="corail">
+    <header class="tool-header">
+      <button class="back-btn" data-nav="accueil" aria-label="Retour à l'accueil"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7" /><path d="M19 12H5" /></svg></button>
+      <h2>Petit Bac</h2>
+      <span class="header-spacer"></span>
+    </header>
+    <div class="tool-body tap-zone" id="lettre-tap-zone">
+      <p class="hint">Touchez l'écran pour tirer une lettre</p>
+      <span class="draw-display" id="lettre-display">?</span>
+    </div>
+    <div class="draw-history" id="lettre-history"></div>
+  </section>
+
+  <!-- CHIFFRE ALEATOIRE -->
+  <section class="screen" id="screen-chiffre" data-screen="chiffre" data-accent="jaune">
+    <header class="tool-header">
+      <button class="back-btn" data-nav="accueil" aria-label="Retour à l'accueil"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7" /><path d="M19 12H5" /></svg></button>
+      <h2>Chiffre aléatoire</h2>
+      <span class="header-spacer"></span>
+    </header>
+    <div class="tool-body tap-zone" id="chiffre-tap-zone">
+      <p class="hint">Touchez l'écran pour tirer un chiffre</p>
+      <span class="draw-display" id="chiffre-display">?</span>
+    </div>
+  </section>
+
+  <!-- ROULETTE DU DOIGT -->
+  <section class="screen" id="screen-roulette" data-screen="roulette" data-accent="teal">
+    <header class="tool-header">
+      <button class="back-btn" data-nav="accueil" aria-label="Retour à l'accueil"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7" /><path d="M19 12H5" /></svg></button>
+      <h2>Roulette du doigt</h2>
+      <span class="header-spacer"></span>
+    </header>
+    <div class="tool-body roulette-body" id="roulette-zone">
+      <p class="hint" id="roulette-hint">Posez plusieurs doigts sur l'écran, puis lancez le compte à rebours</p>
+      <div class="countdown-display" id="roulette-countdown" hidden></div>
+      <div class="roulette-surface" id="roulette-surface"></div>
+    </div>
+    <div class="tool-footer">
+      <button class="btn btn-primary" id="roulette-start-btn">Commencer le compte à rebours</button>
+      <button class="btn btn-ghost" id="roulette-reset-btn" hidden>Recommencer</button>
+    </div>
+  </section>
+
+  <!-- EQUIPES ALEATOIRES -->
+  <section class="screen" id="screen-equipes" data-screen="equipes" data-accent="violet">
+    <header class="tool-header">
+      <button class="back-btn" data-nav="accueil" aria-label="Retour à l'accueil"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7" /><path d="M19 12H5" /></svg></button>
+      <h2>Équipes aléatoires</h2>
+      <span class="header-spacer"></span>
+    </header>
+    <div class="tool-body">
+      <div class="equipes-normal-view" id="equipes-normal-view">
+        <form class="add-form" id="equipes-add-form">
+          <input type="text" id="equipes-name-input" placeholder="Prénom du joueur" aria-label="Prénom du joueur" autocomplete="off" maxlength="24" />
+          <button type="submit" class="btn btn-accent" aria-label="Ajouter">+</button>
+        </form>
+
+        <button type="button" class="btn btn-ghost" id="equipes-finger-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 14a8 8 0 0 1-8 8" /><path d="M18 11v-1a2 2 0 0 0-2-2a2 2 0 0 0-2 2" /><path d="M14 10V9a2 2 0 0 0-2-2a2 2 0 0 0-2 2v1" /><path d="M10 9.5V4a2 2 0 0 0-2-2a2 2 0 0 0-2 2v10" /><path d="M18 11a2 2 0 1 1 4 0v3a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15" /></svg>
+          Détecter via doigts
+        </button>
+
+        <div class="chip-list" id="equipes-chip-list"></div>
+        <button type="button" class="chip-clear-btn" id="equipes-clear-btn" hidden>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 11v6" /><path d="M14 11v6" /><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" /><path d="M3 6h18" /><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" /></svg>
+          Vider la liste
+        </button>
+
+        <div class="stepper-row">
+          <span class="stepper-label">Nombre d'équipes</span>
+          <div class="stepper">
+            <button type="button" class="stepper-btn" id="equipes-count-minus" aria-label="Moins d'équipes">−</button>
+            <span class="stepper-value" id="equipes-count-value">2</span>
+            <button type="button" class="stepper-btn" id="equipes-count-plus" aria-label="Plus d'équipes">+</button>
+          </div>
+        </div>
+
+        <button class="btn btn-primary" id="equipes-generate-btn">Générer les équipes</button>
+        <p class="error-msg" id="equipes-error" hidden></p>
+
+        <div class="teams-result" id="equipes-result"></div>
+      </div>
+
+      <div class="finger-detect" id="equipes-finger-detect" hidden>
+        <p class="hint" id="equipes-finger-hint">Un doigt par joueur, posez-les sur l'écran</p>
+        <div class="countdown-display" id="equipes-finger-countdown" hidden></div>
+        <div class="finger-detect-surface" id="equipes-finger-surface"></div>
+        <div class="finger-detect-footer">
+          <span class="finger-detect-count" id="equipes-finger-count">0 joueur</span>
+          <div class="finger-detect-actions">
+            <button type="button" class="btn btn-ghost" id="equipes-finger-cancel">Annuler</button>
+            <button type="button" class="btn btn-primary" id="equipes-finger-confirm" disabled>Lancer le décompte</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCORE / COMPTEUR -->
+  <section class="screen" id="screen-score" data-screen="score" data-accent="rose">
+    <header class="tool-header">
+      <button class="back-btn" data-nav="accueil" aria-label="Retour à l'accueil"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7" /><path d="M19 12H5" /></svg></button>
+      <h2>Score / Compteur</h2>
+      <span class="header-spacer"></span>
+    </header>
+    <div class="tool-body">
+      <form class="add-form" id="score-add-form">
+        <input type="text" id="score-name-input" placeholder="Prénom du joueur" aria-label="Prénom du joueur" autocomplete="off" maxlength="24" />
+        <button type="submit" class="btn btn-accent" aria-label="Ajouter">+</button>
+      </form>
+
+      <div class="score-list" id="score-list"></div>
+    </div>
+    <div class="tool-footer">
+      <button class="btn btn-ghost" id="score-manage-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 5H3" /><path d="M12 19H3" /><path d="M14 3v4" /><path d="M16 17v4" /><path d="M21 12h-9" /><path d="M21 19h-5" /><path d="M21 5h-7" /><path d="M8 10v4" /><path d="M8 12H3" /></svg>
+        Gérer les joueurs
+      </button>
+      <button class="btn btn-danger-outline" id="score-reset-btn">Réinitialiser les scores</button>
+    </div>
+  </section>
+
+  <!-- DES -->
+  <section class="screen" id="screen-des" data-screen="des" data-accent="bleu">
+    <header class="tool-header">
+      <button class="back-btn" data-nav="accueil" aria-label="Retour à l'accueil"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7" /><path d="M19 12H5" /></svg></button>
+      <h2>Dés</h2>
+      <span class="header-spacer"></span>
+    </header>
+    <div class="tool-body">
+      <div class="stepper-row">
+        <span class="stepper-label">Nombre de dés</span>
+        <div class="stepper">
+          <button type="button" class="stepper-btn" id="des-count-minus" aria-label="Moins de dés">−</button>
+          <span class="stepper-value" id="des-count-value">1</span>
+          <button type="button" class="stepper-btn" id="des-count-plus" aria-label="Plus de dés">+</button>
+        </div>
+      </div>
+
+      <button class="btn btn-ghost" id="des-permission-btn" hidden>Activer le lancer par secousse</button>
+
+      <div class="des-tray" id="des-tray"></div>
+
+      <p class="des-total" id="des-total" hidden></p>
+      <p class="hint" id="des-hint">Secouez ou touchez pour lancer</p>
+    </div>
+  </section>
+
+  <!-- SABLIER -->
+  <section class="screen" id="screen-sablier" data-screen="sablier" data-accent="orange">
+    <header class="tool-header">
+      <button class="back-btn" data-nav="accueil" aria-label="Retour à l'accueil"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7" /><path d="M19 12H5" /></svg></button>
+      <h2>Sablier</h2>
+      <span class="header-spacer"></span>
+    </header>
+    <div class="tool-body">
+      <div class="sablier-presets" id="sablier-presets">
+        <button type="button" class="btn btn-ghost" data-seconds="30">30 s</button>
+        <button type="button" class="btn btn-ghost" data-seconds="60">1 min</button>
+        <button type="button" class="btn btn-ghost" data-seconds="180">3 min</button>
+        <button type="button" class="btn btn-ghost" data-seconds="300">5 min</button>
+      </div>
+
+      <form class="sablier-manual" id="sablier-manual-form">
+        <input type="number" id="sablier-min-input" min="0" max="59" placeholder="min" inputmode="numeric" />
+        <span>:</span>
+        <input type="number" id="sablier-sec-input" min="0" max="59" placeholder="sec" inputmode="numeric" />
+        <button type="submit" class="btn btn-accent">Définir</button>
+      </form>
+
+      <div class="sablier-ring-wrap">
+        <svg viewBox="0 0 200 200" class="sablier-ring" id="sablier-ring">
+          <circle class="ring-bg" cx="100" cy="100" r="90"></circle>
+          <circle class="ring-progress" id="sablier-ring-progress" cx="100" cy="100" r="90"></circle>
+        </svg>
+        <div class="sablier-time" id="sablier-time">00:00</div>
+      </div>
+
+      <p class="hint" id="sablier-status" aria-live="polite"></p>
+      <p class="hint hint-small">L'écran doit rester allumé : le décompte peut s'interrompre si le téléphone se verrouille.</p>
+
+      <div class="sablier-controls">
+        <button class="btn btn-primary" id="sablier-start-btn">Démarrer</button>
+        <button class="btn btn-ghost" id="sablier-pause-btn" hidden>Pause</button>
+        <button class="btn btn-ghost" id="sablier-resume-btn" hidden>Reprendre</button>
+        <button class="btn btn-ghost" id="sablier-reset-btn">Réinitialiser</button>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script src="js/modal.js"></script>
+<script src="js/lettre.js"></script>
+<script src="js/chiffre.js"></script>
+<script src="js/roulette.js"></script>
+<script src="js/equipes.js"></script>
+<script src="js/score.js"></script>
+<script src="js/des.js"></script>
+<script src="js/sablier.js"></script>
+<script src="js/parametres.js"></script>
+<script src="js/pile-face.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
