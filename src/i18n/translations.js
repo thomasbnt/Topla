@@ -206,7 +206,7 @@ export const translations = {
         cacheConfirmLabel: "Vider le cache",
         updateDefault: "Dernière version",
         updateAvailable: "Mettre à jour",
-        byteUnit: " o",
+        byteUnit: " octets",
         kiloUnit: " Ko",
         megaUnit: " Mo",
         dateLocale: "fr-FR",
