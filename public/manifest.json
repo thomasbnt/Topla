@@ -66,29 +66,36 @@
   ],
   "screenshots": [
     {
-      "src": "screenshots/accueil.png",
-      "sizes": "780x1688",
+      "src": "screenshots/home.png",
+      "sizes": "390x844",
       "type": "image/png",
       "form_factor": "narrow",
       "label": "Écran d'accueil avec tous les outils"
     },
     {
-      "src": "screenshots/score.png",
-      "sizes": "780x1688",
+      "src": "screenshots/timer.png",
+      "sizes": "390x844",
       "type": "image/png",
       "form_factor": "narrow",
-      "label": "Suivi des scores avec podium"
+      "label": "Sablier en cours"
     },
     {
-      "src": "screenshots/des.png",
-      "sizes": "780x1688",
+      "src": "screenshots/teams.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Équipes générées"
+    },
+    {
+      "src": "screenshots/dice.png",
+      "sizes": "390x844",
       "type": "image/png",
       "form_factor": "narrow",
       "label": "Dés virtuels"
     },
     {
-      "src": "screenshots/pile-face.png",
-      "sizes": "780x1688",
+      "src": "screenshots/coin-flip.png",
+      "sizes": "390x844",
       "type": "image/png",
       "form_factor": "narrow",
       "label": "Pile ou face"
