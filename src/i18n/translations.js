@@ -147,6 +147,7 @@ export const translations = {
         updateToastText: "Nouvelle version de Topla disponible.",
         updateIgnore: "Ignorer",
         updateApply: "Mettre à jour",
+        updateSuccessText: "Mise à jour effectuée !",
         cancel: "Annuler",
       },
       des: {
@@ -349,6 +350,7 @@ export const translations = {
         updateToastText: "A new version of Topla is available.",
         updateIgnore: "Dismiss",
         updateApply: "Update",
+        updateSuccessText: "Update installed!",
         cancel: "Cancel",
       },
       des: {

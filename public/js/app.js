@@ -92,6 +92,24 @@
     document.body.appendChild(toast);
   }
 
+  // Posé juste avant le reload qui suit une mise à jour appliquée ; lu une
+  // fois au chargement suivant pour confirmer que la mise à jour a réussi.
+  function showUpdateSuccessToast() {
+    if (!sessionStorage.getItem("topla-updated")) return;
+    sessionStorage.removeItem("topla-updated");
+
+    const toast = document.createElement("div");
+    toast.className = "update-toast";
+    toast.setAttribute("role", "status");
+
+    const text = document.createElement("p");
+    text.textContent = window.ToplaI18n.common.updateSuccessText;
+    toast.appendChild(text);
+
+    document.body.appendChild(toast);
+    setTimeout(() => toast.remove(), 4000);
+  }
+
   // Avec les view transitions Astro, la page ne recharge plus entre deux
   // outils : le DOM est remplacé mais ce script ne se réexécute pas
   // forcément. "astro:page-load" se déclenche à chaque navigation (y
@@ -100,6 +118,7 @@
     updateGreeting();
     initInstallButton();
     showUpdateToast();
+    showUpdateSuccessToast();
 
     Object.keys(window.ToplaTools || {}).forEach((name) => {
       const tool = window.ToplaTools[name];
@@ -135,6 +154,7 @@
     // Une mise à jour appliquée pendant que l'app est hors ligne ne doit pas
     // forcer un rechargement : on attend le retour du réseau.
     function reloadWhenOnline() {
+      sessionStorage.setItem("topla-updated", "1");
       if (navigator.onLine) {
         window.location.reload();
       } else {
