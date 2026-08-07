@@ -178,10 +178,11 @@
     countdownEl = document.getElementById("roulette-countdown");
     startBtn = document.getElementById("roulette-start-btn");
     resetBtn = document.getElementById("roulette-reset-btn");
-    if (!surface) return;
+    if (!surface) return false;
 
     startBtn.addEventListener("click", startCountdown);
     resetBtn.addEventListener("click", resetAll);
+    return true;
   }
 
   window.ToplaTools = window.ToplaTools || {};

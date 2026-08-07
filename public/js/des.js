@@ -141,6 +141,20 @@
 
     setTimeout(() => {
       isRolling = false;
+      // curX/curY grow by 360°+ on every roll ; sur beaucoup de lancers l'angle
+      // devient énorme et perd en précision côté GPU (le dé "disparaît" par
+      // moments). On les ramène à l'équivalent dans [0, 360) sans transition
+      // visible : rotateX(4680deg) et rotateX(4680 % 360)deg rendent pareil.
+      dice.forEach((d) => {
+        const normX = ((d.curX % 360) + 360) % 360;
+        const normY = ((d.curY % 360) + 360) % 360;
+        d.curX = normX;
+        d.curY = normY;
+        d.inner.style.transition = "none";
+        d.inner.style.transform = `rotateX(${normX}deg) rotateY(${normY}deg)`;
+        d.inner.offsetHeight;
+        d.inner.style.transition = "";
+      });
     }, ROLL_ANIMATION_MS);
   }
 
@@ -224,7 +238,7 @@
     tray = document.getElementById("des-tray");
     totalEl = document.getElementById("des-total");
     hintEl = document.getElementById("des-hint");
-    if (!tray) return;
+    if (!tray) return false;
 
     renderTray();
     updateCountButtons();
@@ -238,6 +252,7 @@
 
     setupMotion();
 
+    return true;
   }
 
   function onShow() {

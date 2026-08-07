@@ -323,7 +323,7 @@
     stepMinusBtn = document.getElementById("score-step-minus");
     stepPlusBtn = document.getElementById("score-step-plus");
     stepValueEl = document.getElementById("score-step-value");
-    if (!form) return;
+    if (!form) return false;
 
     load();
     loadStep();
@@ -336,6 +336,7 @@
     stepMinusBtn.addEventListener("click", () => changeStep(-1));
     stepPlusBtn.addEventListener("click", () => changeStep(1));
 
+    return true;
   }
 
   window.ToplaTools = window.ToplaTools || {};

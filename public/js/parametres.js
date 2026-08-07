@@ -111,7 +111,7 @@
     updateBtn = document.getElementById("update-app-btn");
     commitLink = document.getElementById("commit-info-link");
     commitValueEl = document.getElementById("commit-info-value");
-    if (!valueEl) return;
+    if (!valueEl) return false;
 
     clearBtn.addEventListener("click", clearStorage);
     if (cacheClearBtn) cacheClearBtn.addEventListener("click", clearCache);
@@ -121,6 +121,7 @@
       document.addEventListener("topla:update-changed", refreshUpdateButton);
     }
     refreshCommitInfo();
+    return true;
   }
 
   window.ToplaTools = window.ToplaTools || {};

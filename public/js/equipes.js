@@ -373,7 +373,7 @@
     fingerSurface = document.getElementById("equipes-finger-surface");
     fingerCountLabel = document.getElementById("equipes-finger-count");
     fingerConfirmBtn = document.getElementById("equipes-finger-confirm");
-    if (!form) return;
+    if (!form) return false;
 
     load();
     renderChips();
@@ -388,6 +388,7 @@
     fingerBtn.addEventListener("click", openFingerDetect);
     fingerConfirmBtn.addEventListener("click", startCountdown);
 
+    return true;
   }
 
   window.ToplaTools = window.ToplaTools || {};

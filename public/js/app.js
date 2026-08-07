@@ -122,8 +122,8 @@
 
     Object.keys(window.ToplaTools || {}).forEach((name) => {
       const tool = window.ToplaTools[name];
-      if (typeof tool.init === "function") tool.init();
-      if (typeof tool.onShow === "function") tool.onShow();
+      const isActive = typeof tool.init === "function" ? tool.init() : false;
+      if (isActive && typeof tool.onShow === "function") tool.onShow();
     });
   }
 
