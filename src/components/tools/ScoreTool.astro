@@ -1,0 +1,60 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { translations, slugs } from "../../i18n/translations.js";
+
+interface Props {
+  lang: "fr" | "en";
+}
+
+const { lang } = Astro.props;
+const t = translations[lang].pages.score;
+const common = translations[lang].common;
+const prefix = lang === "en" ? "/en" : "";
+const slug = lang === "en" ? slugs.score : "score";
+---
+
+<Layout
+  lang={lang}
+  title={t.title}
+  description={t.description}
+  canonicalPath={`${prefix}/${slug}`}
+  themeColor="#E85D9C"
+>
+  <section class="screen is-active" data-accent="rose" transition:name="tool-score">
+    <header class="tool-header">
+      <a class="back-btn" href={prefix || "/"} aria-label={common.back}><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7" /><path d="M19 12H5" /></svg></a>
+      <h1>{t.h1}</h1>
+      <span class="header-spacer"></span>
+    </header>
+    <div class="tool-body">
+      <div class="stepper-row" id="score-settings-row" hidden>
+        <span class="stepper-label">{t.stepLabel}</span>
+        <div class="stepper">
+          <button type="button" class="stepper-btn" id="score-step-minus" aria-label={t.stepMinusLabel}>−</button>
+          <span class="stepper-value" id="score-step-value">1</span>
+          <button type="button" class="stepper-btn" id="score-step-plus" aria-label={t.stepPlusLabel}>+</button>
+        </div>
+      </div>
+
+      <form class="add-form" id="score-add-form">
+        <input type="text" id="score-name-input" placeholder={t.namePlaceholder} aria-label={t.namePlaceholder} autocomplete="off" maxlength="24" />
+        <button type="submit" class="btn btn-accent" aria-label={t.addLabel}>+</button>
+      </form>
+
+      <div class="score-list" id="score-list"></div>
+    </div>
+    <div class="tool-footer">
+      <button class="btn btn-ghost" id="score-manage-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915" /><circle cx="12" cy="12" r="3" /></svg>
+        {t.manageBtn}
+      </button>
+      <button class="btn btn-danger-outline" id="score-reset-btn">{t.resetBtn}</button>
+    </div>
+  </section>
+
+  <Fragment slot="scripts">
+    <script is:inline src="/js/modal.js"></script>
+    <script is:inline src="/js/score.js"></script>
+    <script is:inline src="/js/app.js"></script>
+  </Fragment>
+</Layout>

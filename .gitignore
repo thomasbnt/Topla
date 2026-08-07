@@ -1,0 +1,9 @@
+node_modules/
+.wrangler/
+.DS_Store
+dist/
+.astro/
+.idea/
+.vscode/
+.claude/
+public/js/commit-info.js

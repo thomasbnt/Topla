@@ -1,0 +1,101 @@
+---
+import { ClientRouter } from "astro:transitions";
+import { translations, slugs } from "../i18n/translations.js";
+
+interface Props {
+  lang: "fr" | "en";
+  title: string;
+  description: string;
+  canonicalPath: string;
+  keywords?: string;
+  noindex?: boolean;
+  themeColor?: string;
+}
+
+const { lang, title, description, canonicalPath, keywords, noindex = false, themeColor = "#FF6B4A" } = Astro.props;
+const canonicalURL = new URL(canonicalPath, Astro.site);
+const ogImageURL = new URL("icons/icon-512.png", Astro.site);
+const ogLocale = lang === "en" ? "en_US" : "fr_FR";
+const i18nScript = JSON.stringify(translations[lang].js);
+const slugsScript = JSON.stringify(slugs);
+---
+
+<!doctype html>
+<html lang={lang}>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
+<script is:inline set:html={`
+  (function () {
+    var SLUGS = ${slugsScript};
+    var REVERSE = {};
+    for (var k in SLUGS) REVERSE[SLUGS[k]] = k;
+
+    function toEnglish(path) {
+      var seg = path.replace(/^\\//, "");
+      if (!seg) return "/en";
+      return "/en/" + (SLUGS[seg] || seg);
+    }
+
+    function toFrench(path) {
+      var rest = path.replace(/^\\/en\\/?/, "");
+      if (!rest) return "/";
+      return "/" + (REVERSE[rest] || rest);
+    }
+
+    var path = location.pathname;
+    var isEn = path === "/en" || path.indexOf("/en/") === 0;
+    var stored = localStorage.getItem("toplaLang");
+    if (!stored) {
+      var wantsEn = navigator.language.toLowerCase().indexOf("en") === 0;
+      if (wantsEn !== isEn) {
+        localStorage.setItem("toplaLang", wantsEn ? "en" : "fr");
+        location.replace(wantsEn ? toEnglish(path) : toFrench(path));
+        return;
+      }
+    }
+    localStorage.setItem("toplaLang", isEn ? "en" : "fr");
+  })();
+`} />
+<title>{title}</title>
+<meta name="description" content={description} />
+{keywords && <meta name="keywords" content={keywords} />}
+<meta name="robots" content={noindex ? "noindex, nofollow" : "index, follow"} />
+<link rel="canonical" href={canonicalURL} />
+<meta name="theme-color" content={themeColor} />
+<link rel="manifest" href="/manifest.json" />
+<link rel="icon" href="/icons/icon-192.png" />
+<link rel="apple-touch-icon" href="/icons/icon-192.png" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Topla" />
+<meta property="og:locale" content={ogLocale} />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={ogImageURL} />
+<meta property="og:image:width" content="512" />
+<meta property="og:image:height" content="512" />
+
+<!-- Twitter Card (petite image, pas de grande carte) -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImageURL} />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="Topla" />
+<link rel="stylesheet" href="/css/style.css" />
+<script is:inline set:html={`window.ToplaLang = ${JSON.stringify(lang)}; window.ToplaI18n = ${i18nScript};`} />
+<ClientRouter />
+</head>
+<body>
+
+<div id="app">
+<slot />
+</div>
+
+<slot name="scripts" />
+</body>
+</html>

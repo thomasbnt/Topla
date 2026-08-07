@@ -1,0 +1,27 @@
+name: Suggestion de fonctionnalité
+description: Proposer une idée ou amélioration pour Topla
+title: "[Feature] "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: probleme
+    attributes:
+      label: Problème à résoudre
+      description: Quel besoin ou frustration cette fonctionnalité adresse-t-elle ?
+    validations:
+      required: false
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Solution proposée
+      description: Décris la fonctionnalité ou l'amélioration souhaitée.
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives envisagées
+    validations:
+      required: false

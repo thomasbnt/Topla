@@ -1,0 +1,73 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { translations, slugs } from "../../i18n/translations.js";
+
+interface Props {
+  lang: "fr" | "en";
+}
+
+const { lang } = Astro.props;
+const t = translations[lang].pages.sablier;
+const common = translations[lang].common;
+const prefix = lang === "en" ? "/en" : "";
+const slug = lang === "en" ? slugs.sablier : "sablier";
+---
+
+<Layout
+  lang={lang}
+  title={t.title}
+  description={t.description}
+  canonicalPath={`${prefix}/${slug}`}
+  themeColor="#FF9F43"
+>
+  <section class="screen is-active" data-accent="orange" transition:name="tool-sablier">
+    <header class="tool-header">
+      <a class="back-btn" href={prefix || "/"} aria-label={common.back}><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7" /><path d="M19 12H5" /></svg></a>
+      <h1>{t.h1}</h1>
+      <span class="header-spacer"></span>
+    </header>
+    <div class="tool-body">
+      <div class="sablier-presets" id="sablier-presets">
+        <button type="button" class="btn btn-ghost" data-seconds="30">{t.preset30s}</button>
+        <button type="button" class="btn btn-ghost" data-seconds="60">{t.preset1min}</button>
+        <button type="button" class="btn btn-ghost" data-seconds="180">{t.preset3min}</button>
+        <button type="button" class="btn btn-ghost" data-seconds="300">{t.preset5min}</button>
+      </div>
+
+      <form class="sablier-manual" id="sablier-manual-form">
+        <input type="number" id="sablier-min-input" min="0" max="59" placeholder={t.minPlaceholder} aria-label={t.minutesLabel} inputmode="numeric" />
+        <span>:</span>
+        <input type="number" id="sablier-sec-input" min="0" max="59" placeholder={t.secPlaceholder} aria-label={t.secondsLabel} inputmode="numeric" />
+        <button type="submit" class="btn btn-accent">{t.defineBtn}</button>
+      </form>
+
+      <div class="sablier-ring-wrap">
+        <svg viewBox="0 0 200 200" class="sablier-ring" id="sablier-ring">
+          <circle class="ring-bg" cx="100" cy="100" r="90"></circle>
+          <circle class="ring-progress" id="sablier-ring-progress" cx="100" cy="100" r="90"></circle>
+        </svg>
+        <div class="sablier-time" id="sablier-time">00:00</div>
+      </div>
+
+      <p class="hint" id="sablier-status" aria-live="polite"></p>
+      <p class="hint hint-small">{t.screenLockHint}</p>
+
+      <div class="sablier-controls">
+        <button class="btn btn-primary" id="sablier-start-btn">{t.startBtn}</button>
+        <button class="btn btn-ghost" id="sablier-pause-btn" hidden>{t.pauseBtn}</button>
+        <button class="btn btn-ghost" id="sablier-resume-btn" hidden>{t.resumeBtn}</button>
+        <button class="btn btn-ghost" id="sablier-reset-btn">{t.resetBtn}</button>
+      </div>
+    </div>
+
+    <div class="sablier-stop-overlay" id="sablier-stop-overlay" hidden>
+      <span>{t.stopOverlayTitle}</span>
+      <p>{t.stopOverlayHint}</p>
+    </div>
+  </section>
+
+  <Fragment slot="scripts">
+    <script is:inline src="/js/sablier.js"></script>
+    <script is:inline src="/js/app.js"></script>
+  </Fragment>
+</Layout>

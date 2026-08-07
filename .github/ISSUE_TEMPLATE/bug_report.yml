@@ -1,0 +1,55 @@
+name: Rapport de bug
+description: Signaler un problème dans Topla
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Description du bug
+      description: Décris le problème rencontré.
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Étapes pour reproduire
+      placeholder: |
+        1. Aller sur '...'
+        2. Toucher '...'
+        3. Voir l'erreur
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Comportement attendu
+    validations:
+      required: false
+
+  - type: dropdown
+    id: outil
+    attributes:
+      label: Outil concerné
+      options:
+        - Petit Bac
+        - Chiffre aléatoire
+        - Roulette du doigt
+        - Équipes aléatoires
+        - Score / Compteur
+        - Dés
+        - Sablier
+        - Pile ou face
+        - Autre / global
+    validations:
+      required: true
+
+  - type: input
+    id: device
+    attributes:
+      label: Appareil / navigateur
+      placeholder: ex. iPhone 14, Safari 17
+    validations:
+      required: false

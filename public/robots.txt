@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://topla.thomasbnt.dev/sitemap-index.xml
