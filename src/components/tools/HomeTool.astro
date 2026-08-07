@@ -11,7 +11,7 @@ const t = translations[lang].pages.home;
 const common = translations[lang].common;
 const jsCommon = translations[lang].js.common;
 const prefix = lang === "en" ? "/en" : "";
-const href = (frSlug: string) => `${prefix}/${lang === "en" ? slugs[frSlug] : frSlug}`;
+const href = (frSlug: string) => `${prefix}/${slugs[frSlug]}`;
 ---
 
 <Layout

@@ -24,8 +24,8 @@ Joueurs, équipes et scores sont sauvegardés sur l'appareil (localStorage). Un 
 
 ## Langues
 
-- Français à la racine (`/lettre`, `/score`, …), anglais sous `/en/...` — routing i18n natif d'Astro.
-- URLs anglaises traduites, pas juste préfixées : `/lettre` → `/en/letter`, `/des` → `/en/dice`, `/sablier` → `/en/timer`, etc.
+- Français à la racine (`/letter`, `/score`, …), anglais sous `/en/...` — routing i18n natif d'Astro.
+- Slugs anglais partagés entre les deux langues, seul le préfixe `/en` change : `/dice` → `/en/dice`, `/letter` → `/en/letter`, etc.
 - Au premier chargement, la langue du navigateur est détectée une seule fois puis mémorisée (`localStorage`) — aucune redirection forcée ensuite.
 - Sélecteur FR/EN manuel dans Paramètres.
 - Toute chaîne (pages et scripts) vient d'une seule source : `src/i18n/translations.js`.

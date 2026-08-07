@@ -17,7 +17,7 @@
       "name": "Petit Bac",
       "short_name": "Petit Bac",
       "description": "Tirer une lettre au hasard",
-      "url": "./lettre"
+      "url": "./letter"
     },
     {
       "name": "Roulette du doigt",
@@ -35,7 +35,7 @@
       "name": "Dés",
       "short_name": "Dés",
       "description": "Lancer des dés virtuels",
-      "url": "./des"
+      "url": "./dice"
     }
   ],
   "icons": [

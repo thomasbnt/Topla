@@ -35,7 +35,7 @@ export default defineConfig({
   },
   integrations: [
     sitemap({
-      filter: (page) => !page.endsWith("/parametres") && !page.endsWith("/settings"),
+      filter: (page) => !page.endsWith("/settings"),
       serialize(item) {
         const alt = alternatePaths(new URL(item.url).pathname);
         return {

@@ -1,16 +1,16 @@
-const VERSION = "v31";
+const VERSION = "v32";
 const CACHE_VERSION = `topla-${VERSION}`;
 const APP_SHELL = [
   "./",
-  "./lettre",
-  "./chiffre",
+  "./letter",
+  "./number",
   "./roulette",
-  "./equipes",
+  "./teams",
   "./score",
-  "./des",
-  "./sablier",
-  "./pile-face",
-  "./parametres",
+  "./dice",
+  "./timer",
+  "./coin-flip",
+  "./settings",
   "./en",
   "./en/letter",
   "./en/number",

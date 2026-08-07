@@ -11,7 +11,7 @@ const t = translations[lang].pages.parametres;
 const common = translations[lang].common;
 const jsParametres = translations[lang].js.parametres;
 const prefix = lang === "en" ? "/en" : "";
-const slug = lang === "en" ? slugs.parametres : "parametres";
+const slug = slugs.parametres;
 ---
 
 <Layout
@@ -31,7 +31,7 @@ const slug = lang === "en" ? slugs.parametres : "parametres";
       <div class="stepper-row">
         <span class="stepper-label">{t.languageLabel}</span>
         <div class="stepper lang-switch">
-          <a class={`stepper-btn lang-btn${lang === "fr" ? " is-selected" : ""}`} href="/parametres">FR</a>
+          <a class={`stepper-btn lang-btn${lang === "fr" ? " is-selected" : ""}`} href={`/${slugs.parametres}`}>FR</a>
           <a class={`stepper-btn lang-btn${lang === "en" ? " is-selected" : ""}`} href={`/en/${slugs.parametres}`}>EN</a>
         </div>
       </div>

@@ -10,7 +10,7 @@ const { lang } = Astro.props;
 const t = translations[lang].pages.des;
 const common = translations[lang].common;
 const prefix = lang === "en" ? "/en" : "";
-const slug = lang === "en" ? slugs.des : "des";
+const slug = slugs.des;
 ---
 
 <Layout
