@@ -66,6 +66,16 @@ body {
   color: var(--text);
   -webkit-tap-highlight-color: transparent;
   overscroll-behavior: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+
+input,
+textarea {
+  user-select: text;
+  -webkit-user-select: text;
+  -webkit-touch-callout: default;
 }
 
 button, input {
@@ -334,11 +344,12 @@ body::after {
   padding: 16px 0 8px;
 }
 
-[data-screen="roulette"] .tool-footer {
+[data-accent="teal"] .tool-footer {
   flex-direction: row;
+  margin: 0 -8px;
 }
 
-[data-screen="roulette"] .tool-footer .btn {
+[data-accent="teal"] .tool-footer .btn {
   flex: 1;
 }
 
@@ -640,7 +651,6 @@ body::after {
 
 .roulette-body {
   position: relative;
-  width: 100%;
   flex: 1;
 }
 
@@ -700,6 +710,20 @@ body::after {
 
 .finger-dot.is-revealed {
   transform: scale(1.15);
+  opacity: 1;
+}
+
+.roulette-dim-overlay {
+  position: fixed;
+  z-index: 5000;
+  pointer-events: none;
+  border-radius: var(--radius-l);
+  box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.45);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.roulette-dim-overlay.is-active {
   opacity: 1;
 }
 
@@ -926,6 +950,20 @@ body::after {
   font-weight: 800;
 }
 
+button.stepper-value {
+  border: none;
+  background: none;
+  padding: 4px 6px;
+  border-radius: var(--radius-m);
+  color: inherit;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+button.stepper-value:active {
+  background: rgba(34, 37, 43, 0.08);
+}
+
 .error-msg {
   color: var(--rouge);
   font-size: 14px;
@@ -1098,6 +1136,33 @@ body::after {
 .score-btn.minus {
   background: rgba(34, 37, 43, 0.1);
   color: var(--text);
+}
+
+.score-quick-row {
+  flex-basis: 100%;
+  display: flex;
+  gap: 8px;
+}
+
+.score-quick-btn {
+  flex: 1;
+  height: 40px;
+  border: none;
+  border-radius: var(--radius-m);
+  background: rgba(34, 37, 43, 0.08);
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.score-quick-btn:active {
+  background: rgba(34, 37, 43, 0.16);
+}
+
+.score-quick-btn.is-negative {
+  background: color-mix(in srgb, var(--rouge) 12%, white);
+  color: var(--rouge);
 }
 
 .score-drag-handle {

@@ -2,9 +2,10 @@
   "use strict";
 
   const STORAGE_KEY = "topla-score";
-  const STEP_STORAGE_KEY = "topla-score-step";
-  const MIN_STEP = 1;
-  const MAX_STEP = 99;
+  const CUSTOM_STEP_STORAGE_KEY = "topla-score-custom-step";
+  const MIN_CUSTOM_STEP = -99;
+  const MAX_CUSTOM_STEP = 99;
+  const DEFAULT_CUSTOM_STEP = 3;
   const T = window.ToplaI18n.score;
 
   const GRIP_ICON_SVG =
@@ -23,7 +24,7 @@
   let nextId = 1;
   let isManaging = false;
   let draggingId = null;
-  let step = MIN_STEP;
+  let customStep = DEFAULT_CUSTOM_STEP;
 
   function load() {
     try {
@@ -47,32 +48,47 @@
     }
   }
 
-  function loadStep() {
-    const raw = parseInt(localStorage.getItem(STEP_STORAGE_KEY), 10);
-    step = Number.isFinite(raw) && raw >= MIN_STEP && raw <= MAX_STEP ? raw : MIN_STEP;
+  function loadCustomStep() {
+    const raw = parseInt(localStorage.getItem(CUSTOM_STEP_STORAGE_KEY), 10);
+    customStep = Number.isFinite(raw) && raw >= MIN_CUSTOM_STEP && raw <= MAX_CUSTOM_STEP ? raw : DEFAULT_CUSTOM_STEP;
   }
 
-  function saveStep() {
+  function saveCustomStep() {
     try {
-      localStorage.setItem(STEP_STORAGE_KEY, String(step));
+      localStorage.setItem(CUSTOM_STEP_STORAGE_KEY, String(customStep));
     } catch (e) {
       /* quota dépassé ou stockage désactivé : on continue sans persister */
     }
   }
 
-  function updateStepButtons() {
-    stepValueEl.textContent = String(step);
-    stepMinusBtn.disabled = step <= MIN_STEP;
-    stepPlusBtn.disabled = step >= MAX_STEP;
+  function updateCustomStepDisplay() {
+    stepValueEl.textContent = (customStep >= 0 ? "+" : "") + customStep;
+    stepMinusBtn.disabled = customStep <= MIN_CUSTOM_STEP;
+    stepPlusBtn.disabled = customStep >= MAX_CUSTOM_STEP;
   }
 
-  function changeStep(delta) {
-    const next = step + delta;
-    if (next < MIN_STEP || next > MAX_STEP) return;
-    step = next;
-    saveStep();
-    updateStepButtons();
+  function setCustomStep(value) {
+    customStep = Math.min(MAX_CUSTOM_STEP, Math.max(MIN_CUSTOM_STEP, value));
+    saveCustomStep();
+    updateCustomStepDisplay();
     render();
+  }
+
+  function changeCustomStep(delta) {
+    const next = customStep + delta;
+    if (next < MIN_CUSTOM_STEP || next > MAX_CUSTOM_STEP) return;
+    setCustomStep(next);
+  }
+
+  async function promptCustomStep() {
+    const value = await window.ToplaModal.promptNumber({
+      title: T.customStepPromptTitle,
+      message: T.customStepPromptMessage,
+      confirmLabel: T.customStepPromptConfirm,
+      cancelLabel: window.ToplaI18n.common.cancel,
+    });
+    if (value === null) return;
+    setCustomStep(value);
   }
 
   function changeScore(player, delta) {
@@ -237,13 +253,25 @@
     card.appendChild(actions);
   }
 
+  function createQuickBtn(player, amount) {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "score-quick-btn" + (amount < 0 ? " is-negative" : "");
+    btn.textContent = (amount >= 0 ? "+" : "") + amount;
+    const verb = amount >= 0 ? T.add : T.remove;
+    const plural = Math.abs(amount) > 1 ? T.pointPlural : T.pointSingular;
+    btn.setAttribute("aria-label", verb + Math.abs(amount) + plural + T.toLabel + player.name);
+    btn.addEventListener("click", () => changeScore(player, amount));
+    return btn;
+  }
+
   function renderPlayCard(card, player) {
     const minusBtn = document.createElement("button");
     minusBtn.type = "button";
     minusBtn.className = "score-btn minus";
     minusBtn.textContent = "−";
-    minusBtn.setAttribute("aria-label", T.remove + step + (step > 1 ? T.pointPlural : T.pointSingular) + T.toLabel + player.name);
-    minusBtn.addEventListener("click", () => changeScore(player, -step));
+    minusBtn.setAttribute("aria-label", T.remove + "1" + T.pointSingular + T.toLabel + player.name);
+    minusBtn.addEventListener("click", () => changeScore(player, -1));
 
     const main = document.createElement("div");
     main.className = "score-card-main";
@@ -263,12 +291,19 @@
     plusBtn.type = "button";
     plusBtn.className = "score-btn plus";
     plusBtn.textContent = "+";
-    plusBtn.setAttribute("aria-label", T.add + step + (step > 1 ? T.pointPlural : T.pointSingular) + T.toLabel + player.name);
-    plusBtn.addEventListener("click", () => changeScore(player, step));
+    plusBtn.setAttribute("aria-label", T.add + "1" + T.pointSingular + T.toLabel + player.name);
+    plusBtn.addEventListener("click", () => changeScore(player, 1));
+
+    const quickRow = document.createElement("div");
+    quickRow.className = "score-quick-row";
+    quickRow.appendChild(createQuickBtn(player, 5));
+    quickRow.appendChild(createQuickBtn(player, 10));
+    quickRow.appendChild(createQuickBtn(player, customStep));
 
     card.appendChild(minusBtn);
     card.appendChild(main);
     card.appendChild(plusBtn);
+    card.appendChild(quickRow);
   }
 
   function render() {
@@ -326,15 +361,16 @@
     if (!form) return false;
 
     load();
-    loadStep();
-    updateStepButtons();
+    loadCustomStep();
+    updateCustomStepDisplay();
     render();
 
     form.addEventListener("submit", addPlayer);
     resetBtn.addEventListener("click", resetScores);
     manageBtn.addEventListener("click", toggleManage);
-    stepMinusBtn.addEventListener("click", () => changeStep(-1));
-    stepPlusBtn.addEventListener("click", () => changeStep(1));
+    stepMinusBtn.addEventListener("click", () => changeCustomStep(-1));
+    stepPlusBtn.addEventListener("click", () => changeCustomStep(1));
+    stepValueEl.addEventListener("click", promptCustomStep);
 
     return true;
   }

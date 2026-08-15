@@ -13,6 +13,30 @@
   let activePointers = new Map();
   let countdownTimer = null;
   let isTrackingLive = false;
+  let dimOverlay = null;
+  let dimTimer = null;
+
+  function clearDimOverlay() {
+    clearTimeout(dimTimer);
+    if (dimOverlay) {
+      dimOverlay.remove();
+      dimOverlay = null;
+    }
+  }
+
+  function showDimOverlay() {
+    clearDimOverlay();
+    const rect = surface.getBoundingClientRect();
+    dimOverlay = document.createElement("div");
+    dimOverlay.className = "roulette-dim-overlay";
+    dimOverlay.style.top = rect.top + "px";
+    dimOverlay.style.left = rect.left + "px";
+    dimOverlay.style.width = rect.width + "px";
+    dimOverlay.style.height = rect.height + "px";
+    document.body.appendChild(dimOverlay);
+    requestAnimationFrame(() => dimOverlay.classList.add("is-active"));
+    dimTimer = setTimeout(clearDimOverlay, 5000);
+  }
 
   function surfacePoint(event) {
     const rect = surface.getBoundingClientRect();
@@ -76,6 +100,7 @@
     clearInterval(countdownTimer);
     unbindPointerTracking();
     clearDots();
+    clearDimOverlay();
     countdownEl.hidden = true;
     hint.textContent = HINT_IDLE;
     startBtn.hidden = false;
@@ -166,6 +191,7 @@
     });
     hint.textContent = HINT_WINNER;
     resetBtn.hidden = false;
+    showDimOverlay();
   }
 
   function onShow() {
