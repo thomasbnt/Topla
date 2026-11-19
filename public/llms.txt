@@ -1,0 +1,25 @@
+# topla.thomasbnt.dev
+
+> Topla, la boîte à outils pour animer vos parties de jeux de société : lettre et chiffre aléatoires, roulette du doigt, équipes, scores, dés et sablier.
+
+## Pages
+
+- [Pile ou face — Topla](https://topla.thomasbnt.dev/coin-flip): Lancez une pièce virtuelle : pile ou face, en un geste.
+- [Dés — Topla](https://topla.thomasbnt.dev/dice): Lancez de 1 à 6 dés virtuels, au tap ou en secouant le téléphone.
+- [Topla — Board Game Toolbox](https://topla.thomasbnt.dev/en): Topla, the toolbox for hosting your board game nights: random letter and number, finger roulette, teams, scores, dice and timer.
+- [Coin Flip — Topla](https://topla.thomasbnt.dev/en/coin-flip): Flip a virtual coin in one tap.
+- [Dice — Topla](https://topla.thomasbnt.dev/en/dice): Roll 1 to 6 virtual dice, by tapping or shaking your phone.
+- [Random Number — Topla](https://topla.thomasbnt.dev/en/number): Draw a random number from 0 to 9.
+- [Random Letter — Topla](https://topla.thomasbnt.dev/en/letter): Draw a random letter of the alphabet, never the same one twice in a row.
+- [Finger Roulette — Topla](https://topla.thomasbnt.dev/en/roulette): Pick a random player: everyone places a finger on the screen, a countdown chooses one.
+- [Random Teams — Topla](https://topla.thomasbnt.dev/en/teams): Add players, pick a number of teams, get a balanced random split.
+- [Score / Counter — Topla](https://topla.thomasbnt.dev/en/score): Track your players' scores in real time, with ranking and podium.
+- [Timer — Topla](https://topla.thomasbnt.dev/en/timer): Countdown timer with quick presets or a custom duration, vibration and sound when done.
+- [Petit Bac — Topla](https://topla.thomasbnt.dev/letter): Tirez une lettre de l'alphabet au hasard pour jouer au Petit Bac, jamais deux fois la même d'affilée.
+- [Chiffre aléatoire — Topla](https://topla.thomasbnt.dev/number): Tirez un chiffre de 0 à 9 au hasard.
+- [Roulette du doigt — Topla](https://topla.thomasbnt.dev/roulette): Désignez un joueur au hasard : chacun pose un doigt sur l'écran, un compte à rebours choisit.
+- [Équipes aléatoires — Topla](https://topla.thomasbnt.dev/teams): Ajoutez des joueurs, choisissez un nombre d'équipes, répartition équilibrée aléatoire.
+- [Score / Compteur — Topla](https://topla.thomasbnt.dev/score): Suivez les scores de vos joueurs en temps réel, avec classement et podium.
+- [Sablier — Topla](https://topla.thomasbnt.dev/timer): Minuteur avec presets rapides ou durée personnalisée, vibration et son à la fin.
+- [Settings — Topla](https://topla.thomasbnt.dev/en/settings): Manage the data stored on your device and view Topla's app info.
+- [Paramètres — Topla](https://topla.thomasbnt.dev/settings): Gérez les données stockées sur votre appareil et consultez les informations de l'application Topla.
