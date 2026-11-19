@@ -1,0 +1,31 @@
+---
+// Added by Balise. Put <Seo title="..." description="..." /> in the <head> of your layout.
+interface Props {
+  title: string
+  description: string
+  image?: string
+  /** Defaults to the current page address. */
+  canonical?: string
+}
+
+const { title, description, image, canonical } = Astro.props
+const origin = "https://topla.thomasbnt.dev/"
+const url = canonical ?? new URL(Astro.url.pathname, origin).toString()
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: "topla.thomasbnt.dev",
+  url: origin,
+}
+---
+
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={url} />
+<meta property="og:type" content="website" />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={url} />
+{image && <meta property="og:image" content={new URL(image, origin).toString()} />}
+<meta name="twitter:card" content={image ? 'summary_large_image' : 'summary'} />
+<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
